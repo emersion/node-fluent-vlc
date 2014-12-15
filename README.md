@@ -44,13 +44,13 @@ Sets the output of the command. The target argument may be an output filename, a
 vlc('file:///path/to/file.avi').format('flv');
 ```
 
-#### audioCodec(format): set output audio codec
+#### audioCodec(format, [options]): set output audio codec
 
 ```js
 vlc('file:///path/to/file.avi').audioCodec('vorb');
 ```
 
-#### videoCodec(format): set output video codec
+#### videoCodec(format, [options]): set output video codec
 
 ```js
 vlc('file:///path/to/file.avi').videoCodec('theo');
