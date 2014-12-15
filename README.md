@@ -6,7 +6,7 @@ Inspired from [`fluent-ffmpeg`](https://github.com/fluent-ffmpeg/node-fluent-ffm
 
 Via npm:
 ```
-$ npm install fluent-ffmpeg
+$ npm install fluent-vlc
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ var command = VlcCommand();
 You may pass an input file name or readable stream, a configuration object, or both to the constructor.
 ```js
 var command = vlc('/path/to/file.avi');
-var command = ffmpeg(fs.createReadStream('/path/to/file.avi'));
+var command = vlc(fs.createReadStream('/path/to/file.avi'));
 ```
 
 ### Specifying outputs
