@@ -57,11 +57,26 @@ VlcCommand.prototype._spawn = function (args, options) {
 	var command = VlcCommand.getVlcPath();
 	var proc = spawn(command, args, options);
 
+	if (typeof this._input != 'string') {
+		this._input.resume();
+		this._input.pipe(proc.stdin);
+	}
+	if (typeof this._output != 'string') {
+		proc.stdout.pipe(this._output);
+	}
+console.log(args);
 	proc.on('exit', function () {
 		that.emit('exit');
 	});
 };
 VlcCommand.prototype._getArguments = function () {
+	var input = '';
+	if (typeof this._input == 'string') {
+		input = this._input;
+	} else {
+		input = '-';
+	}
+
 	var outputOpts = [];
 
 	var transcode = [];
@@ -75,10 +90,19 @@ VlcCommand.prototype._getArguments = function () {
 		outputOpts.push('transcode{'+transcode.join(',')+'}');
 	}
 
-	outputOpts.push('std{mux='+this._outputFormat+',access=file,dst='+this._output+'}');
+	var output = ['access=file'];
+	if (this._outputFormat) {
+		output.push('mux='+this._outputFormat);
+	}
+	if (typeof this._output == 'string') {
+		output.push('dst='+this._output);
+	} else {
+		output.push('dst=-');
+	}
+	outputOpts.push('std{'+output.join(',')+'}');
 
 	return [].concat(
-		this._input,
+		input,
 		'--intf', 'dummy', // No UI
 		this._customOpts || [],
 		'--sout', '#'+outputOpts.join(':'), // Output args

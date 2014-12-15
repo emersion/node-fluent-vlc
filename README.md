@@ -26,9 +26,9 @@ var vlc = require('fluent-vlc');
 var command = vlc();
 ```
 
-You may pass an input file name or readable stream, a configuration object, or both to the constructor.
+You may pass an input URL or readable stream, a configuration object, or both to the constructor.
 ```js
-var command = vlc('/path/to/file.avi');
+var command = vlc('file:///path/to/file.avi');
 var command = vlc(fs.createReadStream('/path/to/file.avi'));
 ```
 
@@ -36,24 +36,24 @@ var command = vlc(fs.createReadStream('/path/to/file.avi'));
 
 #### output(target): set the output
 
-Sets the output of the command. The target argument may be an output filename or a writable stream (but at most one output stream may be used with a single command).
+Sets the output of the command. The target argument may be an output filename, a URL or a writable stream (but at most one output stream may be used with a single command).
 
 #### format(format): set output format
 
 ```js
-vlc('/path/to/file.avi').format('flv');
+vlc('file:///path/to/file.avi').format('flv');
 ```
 
 #### audioCodec(format): set output audio codec
 
 ```js
-vlc('/path/to/file.avi').audioCodec('vorb');
+vlc('file:///path/to/file.avi').audioCodec('vorb');
 ```
 
 #### videoCodec(format): set output video codec
 
 ```js
-vlc('/path/to/file.avi').videoCodec('theo');
+vlc('file:///path/to/file.avi').videoCodec('theo');
 ```
 
 ### Misc
@@ -61,5 +61,5 @@ vlc('/path/to/file.avi').videoCodec('theo');
 #### addOption(option...): add a custom VLC option
 
 ```js
-vlc('/path/to/file.avi').format('ogg').videoCodec('theo').audioCodec('vorb').addOption('--sout-theora-quality=5', '--sout-vorbis-quality=1');
+vlc('file:///path/to/file.avi').format('ogg').videoCodec('theo').audioCodec('vorb').addOption('--sout-theora-quality=5', '--sout-vorbis-quality=1');
 ```
