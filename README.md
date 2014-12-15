@@ -23,7 +23,7 @@ The fluent-vlc module returns a constructor that you can use to instanciate VLC 
 
 ```js
 var vlc = require('fluent-vlc');
-var command = VlcCommand();
+var command = vlc();
 ```
 
 You may pass an input file name or readable stream, a configuration object, or both to the constructor.
