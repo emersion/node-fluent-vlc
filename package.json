@@ -1,0 +1,24 @@
+{
+  "name": "fluent-vlc",
+  "version": "0.1.0",
+  "description": "A fluent API to VLC (https://www.videolan.org/vlc/)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/emersion/node-fluent-vlc.git"
+  },
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "vlc",
+    "fluent",
+    "media",
+    "player",
+    "converter"
+  ],
+  "author": "emersion",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emersion/node-fluent-vlc/issues"
+  },
+  "homepage": "https://github.com/emersion/node-fluent-vlc"
+}
